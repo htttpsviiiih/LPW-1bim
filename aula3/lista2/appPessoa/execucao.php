@@ -1,11 +1,15 @@
 <?php
 require_once ('model/Pessoa.php');
+echo "<h1>Criando uma pessoa com dados de requerimento GET</h1>";
+echo"<br>";
+echo "<h2>INFORME: tipo(A ou C), Nome, Sobrenome e Idade</h2>";
+echo"<br>";
 
 $tipo = $_GET['tipo'];
 
 if (! isset($_GET['tipo'])) {
     echo "O tipo de pessoa não foi informado, informe o tipo de pessoa! (C ou A)<br>";
-    exit;
+    exit; //se não utilizar ele vai continuar tentando gerar a pessoa
 }else{
 
     if ($tipo == 'C') {
@@ -22,6 +26,7 @@ if (! isset($_GET['tipo'])) {
 
 if (! isset($_GET['nome']) || ! isset($_GET['sobrenome']) || ! isset($_GET['idade'])) {
     echo "Alguma informação não foi informada, informe o nome, sobrenome e idade!<br>";
+    exit;
 }else{
     if(($_GET['tipo']) && $tipo == 'C'){
         echo "Nome: " . $pessoa['nome'] . "<br>";
